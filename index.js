@@ -57,9 +57,13 @@ exec('sudo curl -k -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/
             if (err) throw err;
             epConfJSON.title = info.title;
             epConfJSON.description = info.description;
+            console.log(`upload date: ${info.upload_date}`)
+            const d = info.upload_date;
+            epConfJSON.upload_date = `${d.slice(4, 6)}/${d.slice(6, 8)}/${d.slice(2, 4)}`;
 
             console.log(`title: ${epConfJSON.title}`)
             console.log(`description: ${epConfJSON.description}`)
+            console.log(`upload date: ${epConfJSON.upload_date}`)
 
             const youtubeDlThumbnailCommand = `youtube-dl -o "${thumbnailOutputFileTemplate}" --skip-download --write-thumbnail --convert-thumbnails ${THUMBNAIL_FORMAT} ${url}`
             console.log(`Thumbnail download command: ${youtubeDlThumbnailCommand}`)
