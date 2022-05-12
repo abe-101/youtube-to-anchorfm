@@ -56,7 +56,7 @@ exec('sudo curl -k -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/
         youtubedl.getInfo(url, function (err, info) {
             if (err) throw err;
             epConfJSON.title = info.title;
-            epConfJSON.description = info.description;
+            epConfJSON.description = info.description + '\n\n' + url;
 
             console.log(`title: ${epConfJSON.title}`)
             console.log(`description: ${epConfJSON.description}`)
